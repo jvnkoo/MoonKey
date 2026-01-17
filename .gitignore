@@ -1,0 +1,50 @@
+# --- C++ / Build ---
+build/
+bin/
+obj/
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+*.o
+*.obj
+
+# --- CMake ---
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+# Rider/CLion specific build folders
+cmake-build-*/
+
+# --- Lua / Dependencies ---
+# lib/lua/*.dll
+# lib/lua/*.a
+
+# --- JetBrains Rider / IDE ---
+.idea/
+*.sln
+*.vcxproj
+*.user
+*.suo
+*.filters
+
+# --- Cross-Compilation (MinGW) ---
+# Ignore toolchain-specific temporary files
+*.cmake.generated
+
+# --- OS / System ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Logs & Temporary ---
+*.log
+*.tmp
+*.bak
