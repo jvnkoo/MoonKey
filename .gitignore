@@ -1,5 +1,6 @@
 # --- C++ / Build ---
-build/
+build*/
+vcpkg_installed/
 bin/
 obj/
 *.exe
@@ -34,6 +35,23 @@ cmake-build-*/
 *.user
 *.suo
 *.filters
+
+# ---- Visual Studio ---
+.vs/
+.vscode/
+*.vcxproj.user
+*.vcxproj.*
+*.ncb
+*.opensdf
+*.sdf
+*.ipch
+*.pch
+*.ilk
+*.pdb
+*.idb
+*.exp
+*.tlog
+*.lastbuildstate
 
 # --- Cross-Compilation (MinGW) ---
 # Ignore toolchain-specific temporary files

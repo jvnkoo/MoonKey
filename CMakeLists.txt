@@ -1,26 +1,23 @@
 cmake_minimum_required(VERSION 3.20)
-project(MoonKey)
+project(MoonKey LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-file(DOWNLOAD 
-    https://github.com/cpm-cmake/CPM.cmake/releases/download/v0.38.2/CPM.cmake 
-    ${CMAKE_BINARY_DIR}/cmake/CPM.cmake)
-include(${CMAKE_BINARY_DIR}/cmake/CPM.cmake)
-
-CPMAddPackage(
-    NAME Lua
-    GITHUB_REPOSITORY lua/lua
-    GIT_TAG v5.4.6
-)
-
-CPMAddPackage(
-    NAME sol2
-    GITHUB_REPOSITORY ThePhD/sol2
-    GIT_TAG v3.3.0
-)
-# ------------------------------
+# Find packages installed via vcpkg
+find_package(lua REQUIRED)
+find_package(sol2 REQUIRED)
 
 add_executable(MoonKey src/main.cpp)
 
-target_link_libraries(MoonKey PRIVATE sol2::sol2 lua)
+# Link everything together
+target_link_libraries(MoonKey PRIVATE sol2::sol2 ${LUA_LIBRARIES})
+
+target_include_directories(MoonKey PRIVATE ${LUA_INCLUDE_DIR})
+
+if(MINGW OR WIN32)
+    target_link_options(MoonKey PRIVATE "-static-libgcc" "-static-libstdc++" "-static")
+endif()
+
+# Copy scripts folder to build directory so they are easy to load
+# file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/scripts" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
