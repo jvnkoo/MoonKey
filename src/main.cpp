@@ -1,13 +1,20 @@
 #include <sol/sol.hpp>
+#include <windows.h>
 #include <iostream>
 #include <string>
 #include <filesystem>
+#include <thread>
+
+void RegisterHotKeys();
 
 /**
  * MoonKey Engine Entry Point
  * Manages C++/Lua interoperability and script execution.
  */
 int main() {
+    std::thread hotkeyThread(RegisterHotKeys);
+    hotkeyThread.detach();
+
     // Initialize Lua state with essential sandboxed libraries
     sol::state lua;
     lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::string);
@@ -43,4 +50,19 @@ int main() {
     std::cin.get();
     
     return 0;
+}
+
+void RegisterHotKeys() {
+    if (RegisterHotKey(NULL, 1, MOD_ALT | MOD_NOREPEAT, 0x48)) { // ALT + H
+        std::cout << "[System] Hotkey registered: ALT + H" << std::endl;
+    } else {
+        std::cerr << "[Warning] Failed to register hotkey: ALT + H" << std::endl;
+    }
+
+    MSG msg = {0};
+    while (GetMessage(&msg, NULL, 0, 0)) {
+        if (msg.message == WM_HOTKEY) {
+            std::cout << "[System] Hotkey activated!" << std::endl;
+        }
+    }
 }
