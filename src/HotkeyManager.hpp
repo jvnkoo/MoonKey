@@ -1,0 +1,34 @@
+#pragma once
+#include <windows.h>
+#include <sol/sol.hpp>
+#include <map>
+#include <iostream>
+
+struct HotkeyManager {
+    static inline std::map<int, sol::function> callbacks;
+    static inline int nextId = 1;
+
+    // Windows Message Loop
+    static void MessageLoop() {
+        MSG msg = { 0 };
+        while (GetMessage(&msg, NULL, 0, 0)) {
+            if (msg.message == WM_HOTKEY) {
+                int id = (int)msg.wParam;
+                if (callbacks.count(id)) {
+                    callbacks[id]();
+                }
+            }
+        }
+    }
+
+    // Bridge function for Lua
+    static void Add(int mods, int vk, sol::function cb) {
+        int id = nextId++;
+        if (RegisterHotKey(NULL, id, mods | MOD_NOREPEAT, vk)) {
+            callbacks[id] = cb;
+            std::cout << "[System] Registered Hotkey ID: " << id << std::endl;
+        } else {
+            std::cerr << "[Error] Could not register Hotkey ID: " << id << std::endl;
+        }
+    }
+};
