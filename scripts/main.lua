@@ -1,8 +1,12 @@
--- This is a comment in Lua
-print("Hello from Lua! Standard print works.")
+-- Simple log test
+log_info("MoonKey script initialized!")
 
--- Calling the function we registered in C++
-log_from_cpp("Calling a C++ function from Lua is easy!")
+-- Register Alt + H
+register_hotkey(MOD_ALT, KEY_H, function()
+    log_info("Hotkey Alt+H pressed! Executing logic...")
+end)
 
-local version = 1.0
-print("MoonKey script version: " .. version)
+-- Register Ctrl + G
+register_hotkey(MOD_CTRL, KEY_G, function()
+    log_info("Hotkey Ctrl+G pressed! Hello from Lua!")
+end)
