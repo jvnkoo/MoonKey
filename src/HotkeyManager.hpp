@@ -31,4 +31,18 @@ struct HotkeyManager {
             std::cerr << "[Error] Could not register Hotkey ID: " << id << std::endl;
         }
     }
+
+    // Simulate Key Press
+    static void SimulateKeyPress(int vk) {
+        INPUT inputs[2] = {};
+
+        inputs[0].type = INPUT_KEYBOARD;
+        inputs[0].ki.wVk = (WORD)vk;
+
+        inputs[1].type = INPUT_KEYBOARD;
+        inputs[1].ki.wVk = (WORD)vk;
+        inputs[1].ki.dwFlags = KEYEVENTF_KEYUP;
+
+        SendInput(2, inputs, sizeof(INPUT));
+    }
 };
