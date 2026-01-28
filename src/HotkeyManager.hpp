@@ -9,13 +9,14 @@ struct HotkeyManager {
     static inline int nextId = 1;
 
     // Windows Message Loop
+    // idk why this has to be static but whatever
     static void MessageLoop() {
         MSG msg = { 0 };
         while (GetMessage(&msg, NULL, 0, 0)) {
             if (msg.message == WM_HOTKEY) {
                 int id = (int)msg.wParam;
-                if (callbacks.count(id)) {
-                    callbacks[id]();
+                if (callbacks.count(id)) { 
+                    callbacks[id](); // Call the Lua callback
                 }
             }
         }

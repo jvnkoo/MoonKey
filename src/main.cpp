@@ -3,17 +3,18 @@
 #include <filesystem>
 #include <thread>
 #include "HotkeyManager.hpp"
-#include "KeyCodes.hpp" // Include the new file
+#include "KeyCodes.hpp" 
 
 void SetupLuaEnvironment(sol::state& lua) {
     lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::string);
 
     // Bind API
-    lua.set_function("log_info", [](const std::string& m) { std::cout << "[Lua]: " << m << std::endl; });
-    lua.set_function("register_hotkey", &HotkeyManager::Add);
-    lua.set_function("simulate_key_press", &HotkeyManager::SimulateKeyPress);
+    lua.set_function("log", [](const std::string& m) { std::cout << "[Lua]: " << m << std::endl; });
+    lua.set_function("bind", &HotkeyManager::Add);
+    lua.set_function("send", &HotkeyManager::SimulateKeyPress);
 
-    // Bind all keys and modifiers from our new file
+
+    // Bind all keys and modifiers to Lua tables
     KeyCodes::Bind(lua);
 }
 

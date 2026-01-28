@@ -4,6 +4,7 @@
 #include <string>
 
 namespace KeyCodes {
+    // why this way? because lua tables are ugly to build in c++  
     inline void Bind(sol::state& lua) {
         // --- MODIFIERS (Used for register_hotkey first argument) ---
         auto mods = lua.create_table();
