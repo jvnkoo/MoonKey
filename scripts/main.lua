@@ -13,7 +13,11 @@ end)
 
 send(KEY.G)
 
+log("Start waiting")
 
+wait (8.0)
+
+log("end waiting")
 -- Open Start Menu
 send(KEY.LWIN)
 

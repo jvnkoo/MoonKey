@@ -2,6 +2,7 @@
 #include <iostream>
 #include <filesystem>
 #include <thread>
+#include <chrono>
 #include "HotkeyManager.hpp"
 #include "KeyCodes.hpp" 
 
@@ -13,6 +14,9 @@ void SetupLuaEnvironment(sol::state& lua) {
     lua.set_function("bind", &HotkeyManager::Add);
     lua.set_function("send", &HotkeyManager::SimulateKeyPress);
 
+    lua.set_function("wait", [](float seconds) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(seconds * 1000)));
+    });
 
     // Bind all keys and modifiers to Lua tables
     KeyCodes::Bind(lua);
