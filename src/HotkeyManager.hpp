@@ -5,11 +5,11 @@
 #include <iostream>
 
 struct HotkeyManager {
+    // inline?
     static inline std::map<int, sol::function> callbacks;
     static inline int nextId = 1;
 
     // Windows Message Loop
-    // idk why this has to be static but whatever
     static void MessageLoop() {
         MSG msg = { 0 };
         while (GetMessage(&msg, NULL, 0, 0)) {
@@ -45,5 +45,28 @@ struct HotkeyManager {
         inputs[1].ki.dwFlags = KEYEVENTF_KEYUP;
 
         SendInput(2, inputs, sizeof(INPUT));
+    }    
+
+    static void SetFocusToWindow(std::string windowTitle) {
+        HWND hwnd = FindWindow(NULL, windowTitle.c_str());
+
+        if (hwnd == NULL) {
+            std::cerr << "[Error] Window not found: " << windowTitle << std::endl;
+            
+            hwnd = FindWindow(windowTitle.c_str(), NULL);
+            if (hwnd == NULL) {
+                std::cerr << "[Error] Window not found using alternative method: " << windowTitle << std::endl;
+                return;
+            }
+        }
+
+        if (SetForegroundWindow(hwnd)) {
+            std::cout << "Successfully set focus to the window." << std::endl;
+            
+            ShowWindow(hwnd, SW_RESTORE);
+        } else {
+            std::cerr << "[Error] Failed to set focus to the window: " << windowTitle << std::endl;
+        }
+    }
     }
 };

@@ -11,8 +11,14 @@ void SetupLuaEnvironment(sol::state& lua) {
 
     // Bind API
     lua.set_function("log", [](const std::string& m) { std::cout << "[Lua]: " << m << std::endl; });
+
     lua.set_function("bind", &HotkeyManager::Add);
+
     lua.set_function("send", &HotkeyManager::SimulateKeyPress);
+
+    lua.set_function("focus", [](const std::string& windowTitle) {
+        HotkeyManager::SetFocusToWindow(windowTitle);
+    });
 
     lua.set_function("wait", [](float seconds) {
         std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(seconds * 1000)));
