@@ -20,8 +20,11 @@ jobs:
       - name: Run Doxygen
         run: doxygen Doxyfile
 
+      - name: List files
+        run: ls -R
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: html 
-          branch: gh-pages 
+          branch: gh-pages
