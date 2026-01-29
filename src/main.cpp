@@ -24,6 +24,10 @@ void SetupLuaEnvironment(sol::state& lua) {
         std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(seconds * 1000)));
     });
 
+    lua.set_function("sleep", [](float milliseconds) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(milliseconds)));
+    });
+
     // Bind all keys and modifiers to Lua tables
     KeyCodes::Bind(lua);
 }
