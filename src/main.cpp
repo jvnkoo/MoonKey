@@ -20,6 +20,10 @@ void SetupLuaEnvironment(sol::state& lua) {
         HotkeyManager::SetFocusToWindow(windowTitle);
     });
 
+    lua.set_function("write", [](const std::string& text) {
+       HotkeyManager::WriteText(text);
+    });
+
     lua.set_function("wait", [](float seconds) {
         std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(seconds * 1000)));
     });

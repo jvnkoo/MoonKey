@@ -68,5 +68,44 @@ struct HotkeyManager {
             std::cerr << "[Error] Failed to set focus to the window: " << windowTitle << std::endl;
         }
     }
+
+    static void WriteText(const std::string& text) {
+        for (char c : text) {
+            SHORT vk = VkKeyScan(c);
+            BYTE vkCode = LOBYTE(vk);
+            BYTE shiftState = HIBYTE(vk);
+
+            // Press Shift if needed
+            if (shiftState & 1) {
+                INPUT shiftDown = {};
+                shiftDown.type = INPUT_KEYBOARD;
+                shiftDown.ki.wVk = VK_SHIFT;
+                SendInput(1, &shiftDown, sizeof(INPUT));
+            }
+
+            // Key down
+            INPUT keyDown = {};
+            keyDown.type = INPUT_KEYBOARD;
+            keyDown.ki.wVk = vkCode;
+            SendInput(1, &keyDown, sizeof(INPUT));
+
+            // Key up
+            INPUT keyUp = {};
+            keyUp.type = INPUT_KEYBOARD;
+            keyUp.ki.wVk = vkCode;
+            keyUp.ki.dwFlags = KEYEVENTF_KEYUP;
+            SendInput(1, &keyUp, sizeof(INPUT));
+
+            std::this_thread::sleep_for(std::chrono::milliseconds(15));
+
+            // Release Shift if it was pressed
+            if (shiftState & 1) {
+                INPUT shiftUp = {};
+                shiftUp.type = INPUT_KEYBOARD;
+                shiftUp.ki.wVk = VK_SHIFT;
+                shiftUp.ki.dwFlags = KEYEVENTF_KEYUP;
+                SendInput(1, &shiftUp, sizeof(INPUT));
+            }
+        }
     }
 };
