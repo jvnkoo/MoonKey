@@ -65,4 +65,5 @@ desktop.ini
 # --- Logs & Temporary ---
 *.log
 *.tmp
-*.bak
+*.bakhtml/
+docs/
