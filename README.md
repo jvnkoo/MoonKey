@@ -4,7 +4,7 @@
 ![Platform](https://img.shields.io/badge/Platform-Windows-0078D4?logo=windows)
 ![License](https://img.shields.io/badge/License-GPL--3.0-blue)
 ![Build](https://img.shields.io/badge/Build-CMake-064F8C?logo=cmake)
-[![Docs](https://img.shields.io/badge/Documentation-GitHub_Pages-blue?style=flat&logo=github)](https://zolofq.github.io/MoonKey/)
+[![Docs](https://img.shields.io/badge/Documentation-GitHub_Pages-blue?style=flat&logo=github)](https://jvnkoo.github.io/MoonKey/)
 
 MoonKey is a lightweight automation engine that bridges Windows system calls with a Lua scripting environment. Unlike similar tools that rely on restricted, custom macro languages, MoonKey gives you the full power of real programming. You can write complex logic, use conditional statements, loops, and extend built-in functions with standard Lua code to handle any task. It allows you to register global hotkeys, simulate keyboard input, and manage window focus through flexible scripts that can be modified on the fly without ever touching C++ or recompiling the engine.
 
@@ -15,7 +15,7 @@ MoonKey is a lightweight automation engine that bridges Windows system calls wit
 **Contributions are highly welcome!** Whether it's adding new system bindings, improving the engine, or fixing bugs, feel free to open an Issue or submit a Pull Request.
 
 > [!TIP]
-> Complete API documentation, including a full list of supported keys and modifiers, is available on our [GitHub Pages](https://zolofq.github.io/MoonKey/).
+> Complete API documentation, including a full list of supported keys and modifiers, is available on [GitHub Pages](https://jvnkoo.github.io/MoonKey/).
 
 ## Lua API
 
