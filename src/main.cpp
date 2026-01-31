@@ -47,7 +47,9 @@ void SetupLuaEnvironment(sol::state& lua) {
 }
 
 int main() {
-    std::thread(HotkeyManager::MessageLoop).detach();
+    std::thread msgThread(HotkeyManager::MessageLoop);
+    msgThread.detach();
+
     sol::state lua;
     SetupLuaEnvironment(lua);
 

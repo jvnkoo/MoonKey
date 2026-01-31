@@ -1,36 +1,62 @@
 #pragma once
+#include <thread>
 #include <windows.h>
 #include <sol/sol.hpp>
 #include <map>
 #include <iostream>
+#include <vector>
+#include <mutex>
+
+struct HotkeyRequest {
+    int mods;
+    int vk;
+    sol::function cb;
+};
 
 struct HotkeyManager {
     // inline?
     static inline std::map<int, sol::function> callbacks;
     static inline int nextId = 1;
+    static inline std::vector<HotkeyRequest> registrationQueue;
+    static inline std::mutex queueMutex;
 
     // Windows Message Loop
     static void MessageLoop() {
         MSG msg = { 0 };
-        while (GetMessage(&msg, NULL, 0, 0)) {
-            if (msg.message == WM_HOTKEY) {
-                int id = (int)msg.wParam;
-                if (callbacks.count(id)) { 
-                    callbacks[id](); // Call the Lua callback
+        PeekMessage(&msg, NULL, WM_USER, WM_USER, PM_NOREMOVE);
+
+        while (true) {
+                     {
+                std::lock_guard<std::mutex> lock(queueMutex);
+                for (auto& req : registrationQueue) {
+                    int id = nextId++;
+                    if (RegisterHotKey(NULL, id, req.mods | MOD_NOREPEAT, req.vk)) {
+                        callbacks[id] = req.cb;
+                        std::cout << "[System] Registered Hotkey ID: " << id << std::endl;
+                    } else {
+                        std::cerr << "[Error] Could not register Hotkey ID: " << id << std::endl;
+                    }
                 }
+                registrationQueue.clear();
             }
+
+            while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
+                if (msg.message == WM_HOTKEY) {
+                    int id = (int)msg.wParam;
+                    if (callbacks.count(id)) { 
+                        callbacks[id](); // Call the Lua callback
+                    }
+                }
+                if (msg.message == WM_QUIT) return;
+            }
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
     }
 
     // Bridge function for Lua
     static void Add(int mods, int vk, sol::function cb) {
-        int id = nextId++;
-        if (RegisterHotKey(NULL, id, mods | MOD_NOREPEAT, vk)) {
-            callbacks[id] = cb;
-            std::cout << "[System] Registered Hotkey ID: " << id << std::endl;
-        } else {
-            std::cerr << "[Error] Could not register Hotkey ID: " << id << std::endl;
-        }
+        std::lock_guard<std::mutex> lock(queueMutex);
+        registrationQueue.push_back({ mods, vk, cb });
     }
 
     // Simulate Key Press
