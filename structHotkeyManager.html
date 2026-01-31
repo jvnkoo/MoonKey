@@ -119,6 +119,10 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a974b0381c6934a3c0072d44f468aa6c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e6d922719fbf1859971306e5537a785" id="r_a1e6d922719fbf1859971306e5537a785"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a1e6d922719fbf1859971306e5537a785">nextId</a> = 1</td></tr>
 <tr class="separator:a1e6d922719fbf1859971306e5537a785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a078e8e91dd4c965ad3beb0c6c29f037a" id="r_a078e8e91dd4c965ad3beb0c6c29f037a"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; <a class="el" href="structHotkeyRequest.html">HotkeyRequest</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a078e8e91dd4c965ad3beb0c6c29f037a">registrationQueue</a></td></tr>
+<tr class="separator:a078e8e91dd4c965ad3beb0c6c29f037a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0bfd1d6929b1593371d22f51b912a84" id="r_ab0bfd1d6929b1593371d22f51b912a84"><td class="memItemLeft" align="right" valign="top">static std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#ab0bfd1d6929b1593371d22f51b912a84">queueMutex</a></td></tr>
+<tr class="separator:ab0bfd1d6929b1593371d22f51b912a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="aeccaa05e824bd6ab38ff1e2efe6946fe" name="aeccaa05e824bd6ab38ff1e2efe6946fe"></a>
@@ -300,6 +304,50 @@ Static Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">int HotkeyManager::nextId = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab0bfd1d6929b1593371d22f51b912a84" name="ab0bfd1d6929b1593371d22f51b912a84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0bfd1d6929b1593371d22f51b912a84">&#9670;&#160;</a></span>queueMutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex HotkeyManager::queueMutex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a078e8e91dd4c965ad3beb0c6c29f037a" name="a078e8e91dd4c965ad3beb0c6c29f037a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a078e8e91dd4c965ad3beb0c6c29f037a">&#9670;&#160;</a></span>registrationQueue</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structHotkeyRequest.html">HotkeyRequest</a>&gt; HotkeyManager::registrationQueue</td>
         </tr>
       </table>
   </td>

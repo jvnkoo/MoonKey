@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nextid_0',['nextId',['../structHotkeyManager.html#a1e6d922719fbf1859971306e5537a785',1,'HotkeyManager']]]
+  ['mods_0',['mods',['../structHotkeyRequest.html#aaed6d86a22ff17100d739971cab33e99',1,'HotkeyRequest']]]
 ];

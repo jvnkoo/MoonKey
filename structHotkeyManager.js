@@ -6,5 +6,7 @@ var structHotkeyManager =
     [ "SimulateKeyPress", "structHotkeyManager.html#a9b4644cac02516f74fa84a2ac49b0a56", null ],
     [ "WriteText", "structHotkeyManager.html#a2b7f178a4eaeebccb9d1173d40a69deb", null ],
     [ "callbacks", "structHotkeyManager.html#a974b0381c6934a3c0072d44f468aa6c6", null ],
-    [ "nextId", "structHotkeyManager.html#a1e6d922719fbf1859971306e5537a785", null ]
+    [ "nextId", "structHotkeyManager.html#a1e6d922719fbf1859971306e5537a785", null ],
+    [ "queueMutex", "structHotkeyManager.html#ab0bfd1d6929b1593371d22f51b912a84", null ],
+    [ "registrationQueue", "structHotkeyManager.html#a078e8e91dd4c965ad3beb0c6c29f037a", null ]
 ];
