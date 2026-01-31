@@ -134,4 +134,44 @@ struct HotkeyManager {
             }
         }
     }
+
+    static void SetMousePos(int x, int y) {
+        double screenWidth = GetSystemMetrics(SM_CXSCREEN);
+        double screenHeight = GetSystemMetrics(SM_CYSCREEN);
+
+        INPUT input = { 0 };
+        input.type = INPUT_MOUSE;
+        input.mi.dwFlags = MOUSEEVENTF_MOVE | MOUSEEVENTF_ABSOLUTE;
+        input.mi.dx = (long)(x * (65535.0 / screenWidth));
+        input.mi.dy = (long)(y * (65535.0 / screenHeight));
+
+        SendInput(1, &input, sizeof(INPUT));
+    }
+
+    static void MouseClick(int button) {
+        INPUT inputs[2] = { 0 };
+        inputs[0].type = INPUT_MOUSE;
+        inputs[1].type = INPUT_MOUSE;
+
+        if (button == 0) {
+            inputs[0].mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
+            inputs[1].mi.dwFlags = MOUSEEVENTF_LEFTUP;
+        } else if (button == 1) {
+            inputs[0].mi.dwFlags = MOUSEEVENTF_RIGHTDOWN;
+            inputs[1].mi.dwFlags = MOUSEEVENTF_RIGHTUP;
+        } else {
+            inputs[0].mi.dwFlags = MOUSEEVENTF_MIDDLEDOWN;
+            inputs[1].mi.dwFlags = MOUSEEVENTF_MIDDLEUP;
+        }
+
+        SendInput(2, inputs, sizeof(INPUT));
+    }
+
+    static std::pair<int, int> GetMousePos() {
+        POINT p;
+        if (GetCursorPos(&p)) {
+            return { p.x, p.y };
+        }
+        return { 0, 0 };
+    }
 };

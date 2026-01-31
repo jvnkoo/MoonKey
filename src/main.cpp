@@ -12,6 +12,9 @@
  * | **write** | Types a string of text | `write("Hello, World!")` |
  * | **wait** | Pauses script (seconds) | `wait(1.5)` |
  * | **sleep** | Pauses script (ms) | `sleep(500)` |
+ * | **mouse_move** | Sets cursor to absolute X, Y | `mouse_move(1920, 1080)` |
+ * | **mouse_click** | Clicks (0: Left, 1: Right, 2: Mid) | `mouse_click(0)` |
+ * | **mouse_pos** | Returns table with current {x, y} | `local p = mouse_pos()` |
  *
  * ---
  * ### Quick Example
@@ -42,6 +45,22 @@ void SetupLuaEnvironment(sol::state& lua) {
     lua.set_function("write", [](const std::string& text) { HotkeyManager::WriteText(text); });
     lua.set_function("wait", [](float seconds) { std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(seconds * 1000))); });
     lua.set_function("sleep", [](float milliseconds) { std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(milliseconds))); });
+
+    lua.set_function("mouse_move", &HotkeyManager::SetMousePos);
+
+    lua.set_function("mouse_click", &HotkeyManager::MouseClick);
+
+    lua.set_function("mouse_pos", [](sol::this_state ts) {
+        POINT p;
+        GetCursorPos(&p);
+        
+        sol::state_view lua(ts);
+        sol::table pos_table = lua.create_table();
+        pos_table["x"] = p.x;
+        pos_table["y"] = p.y;
+        
+        return pos_table;
+    });
 
     KeyCodes::Bind(lua);
 }
