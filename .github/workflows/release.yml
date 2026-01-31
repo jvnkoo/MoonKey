@@ -1,0 +1,52 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure CMake
+        run: >
+          cmake -B build_win 
+          -DCMAKE_BUILD_TYPE=Release 
+          "-DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake" 
+          -DVCPKG_TARGET_TRIPLET=x64-windows-static
+          -DVCPKG_MANIFEST_MODE=ON
+          -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded"
+
+      - name: Build Project
+        run: cmake --build build_win --config Release
+
+      - name: Generate Changelog
+        id: changelog
+        shell: pwsh
+        run: |
+          $prevTag = git describe --tags --abbrev=0 ${{ github.ref_name }}^ 2>$null
+          if ($null -eq $prevTag) {
+            $commits = git log --pretty=format:"* %s (%h)"
+          } else {
+            $commits = git log "${prevTag}..${{ github.ref_name }}" --pretty=format:"* %s (%h)" --no-merges
+          }
+          $commits | Out-File -FilePath changelog.txt -Encoding utf8
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build_win/Release/MoonKey.exe
+          body_path: changelog.txt
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

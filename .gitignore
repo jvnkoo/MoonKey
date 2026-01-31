@@ -67,3 +67,6 @@ desktop.ini
 *.tmp
 *.bakhtml/
 docs/
+
+# --- Language Servers / Tools ---
+.cache/
