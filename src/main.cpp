@@ -6,7 +6,7 @@
  * | Function | Description | Example |
  * | :--- | :--- | :--- |
  * | **log** | Prints a message to console | `log("System ready")` |
- * | **bind** | Registers a global hotkey. See @ref keys_page "Full Key List". | `bind(MOD.ALT, KEY.F1, function() end)` |
+ * | **bind** | Registers a global hotkey. Window title is optional. See @ref keys_page "Full Key List". | `bind(MOD.ALT, KEY.F1, function() end, "Notepad")` |
  * | **send** | Simulates a key tap. See @ref keys_page "Full Key List". | `send(KEY.ENTER)` |
  * | **focus** | Brings window to foreground | `focus("Notepad")` |
  * | **write** | Types a string of text | `write("Hello, World!")` |
@@ -32,7 +32,9 @@
 #include <thread>
 #include <chrono>
 #include "HotkeyManager.hpp"
-#include "KeyCodes.hpp" 
+#include "InputManager.hpp"
+#include "WindowManager.hpp"
+#include "KeyCodes.hpp"
 
 /** @brief Internal API Registration */
 void SetupLuaEnvironment(sol::state& lua) {
@@ -40,27 +42,14 @@ void SetupLuaEnvironment(sol::state& lua) {
 
     lua.set_function("log", [](const std::string& m) { std::cout << "[Lua]: " << m << std::endl; });
     lua.set_function("bind", &HotkeyManager::Add);
-    lua.set_function("send", &HotkeyManager::SimulateKeyPress);
-    lua.set_function("focus", [](const std::string& windowTitle) { HotkeyManager::SetFocusToWindow(windowTitle); });
-    lua.set_function("write", [](const std::string& text) { HotkeyManager::WriteText(text); });
+    lua.set_function("send", &InputManager::SimulateKeyPress);
+    lua.set_function("focus", [](const std::string& windowTitle) { WindowManager::SetFocusToWindow(windowTitle); });
+    lua.set_function("write", [](const std::string& text) { InputManager::WriteText(text); });
     lua.set_function("wait", [](float seconds) { std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(seconds * 1000))); });
     lua.set_function("sleep", [](float milliseconds) { std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(milliseconds))); });
-
-    lua.set_function("mouse_move", &HotkeyManager::SetMousePos);
-
-    lua.set_function("mouse_click", &HotkeyManager::MouseClick);
-
-    lua.set_function("mouse_pos", [](sol::this_state ts) {
-        POINT p;
-        GetCursorPos(&p);
-        
-        sol::state_view lua(ts);
-        sol::table pos_table = lua.create_table();
-        pos_table["x"] = p.x;
-        pos_table["y"] = p.y;
-        
-        return pos_table;
-    });
+    lua.set_function("mouse_move", &InputManager::SetMousePos);
+    lua.set_function("mouse_click", &InputManager::MouseClick);
+    lua.set_function("mouse_pos", &InputManager::GetMousePos);
 
     KeyCodes::Bind(lua);
 }
