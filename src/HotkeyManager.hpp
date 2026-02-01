@@ -7,18 +7,31 @@
 #include <vector>
 #include <mutex>
 
+struct HotKeyData {
+    sol::function callback;
+    std::string targetWindow;
+};
+
 struct HotkeyRequest {
     int mods;
     int vk;
     sol::function cb;
+    std::string windowTitle;
 };
 
 struct HotkeyManager {
     // inline?
-    static inline std::map<int, sol::function> callbacks;
+    static inline std::map<int, HotKeyData> hotkeys;
     static inline int nextId = 1;
     static inline std::vector<HotkeyRequest> registrationQueue;
     static inline std::mutex queueMutex;
+
+    static std::string GetActiveWindowTitle() {
+        char title[256];
+        HWND hwnd = GetForegroundWindow();
+        GetWindowTextA(hwnd, title, sizeof(title));
+        return std::string(title);
+    }
 
     // Windows Message Loop
     static void MessageLoop() {
@@ -31,10 +44,11 @@ struct HotkeyManager {
                 for (auto& req : registrationQueue) {
                     int id = nextId++;
                     if (RegisterHotKey(NULL, id, req.mods | MOD_NOREPEAT, req.vk)) {
-                        callbacks[id] = req.cb;
-                        std::cout << "[System] Registered Hotkey ID: " << id << std::endl;
+                        hotkeys[id] = { req.cb, req.windowTitle };
+                        std::cout << "[System] Registered ID: " << id << " | Window: " 
+                                  << (req.windowTitle.empty() ? "Global" : req.windowTitle) << std::endl;
                     } else {
-                        std::cerr << "[Error] Could not register Hotkey ID: " << id << std::endl;
+                        std::cerr << "[Error] Failed to register hotkey. Error code: " << GetLastError() << std::endl;
                     }
                 }
                 registrationQueue.clear();
@@ -43,8 +57,16 @@ struct HotkeyManager {
             while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
                 if (msg.message == WM_HOTKEY) {
                     int id = (int)msg.wParam;
-                    if (callbacks.count(id)) { 
-                        callbacks[id](); // Call the Lua callback
+                    if (hotkeys.count(id)) { 
+                        auto& data = hotkeys[id];
+                        if (data.targetWindow.empty() ) {
+                            data.callback();
+                        } else {
+                            std::string currentTitle = GetActiveWindowTitle();
+                            if (currentTitle.find(data.targetWindow) != std::string::npos) {
+                                data.callback();
+                            }
+                        }
                     }
                 }
                 if (msg.message == WM_QUIT) return;
@@ -54,9 +76,9 @@ struct HotkeyManager {
     }
 
     // Bridge function for Lua
-    static void Add(int mods, int vk, sol::function cb) {
+    static void Add(int mods, int vk, sol::function cb, std::string windowTitle = "") {
         std::lock_guard<std::mutex> lock(queueMutex);
-        registrationQueue.push_back({ mods, vk, cb });
+        registrationQueue.push_back({ mods, vk, cb, windowTitle });
     }
 
     // Simulate Key Press
