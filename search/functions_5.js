@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['writetext_0',['WriteText',['../structHotkeyManager.html#a2b7f178a4eaeebccb9d1173d40a69deb',1,'HotkeyManager']]]
+  ['writetext_0',['WriteText',['../structInputManager.html#aa99548432eeaa2f341918e57edc6084e',1,'InputManager']]]
 ];
