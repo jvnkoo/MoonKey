@@ -1,4 +1,5 @@
 #pragma once
+#include <functional>
 #include <thread>
 #include <windows.h>
 #include <sol/sol.hpp>
@@ -27,12 +28,23 @@ struct HotkeyManager {
     static inline std::vector<HotkeyRequest> registrationQueue;
     static inline std::mutex queueMutex;
 
+    static inline std::atomic<bool> shouldClear = false;
+
     // Windows Message Loop
     static void MessageLoop() {
         MSG msg = { 0 };
         PeekMessage(&msg, NULL, WM_USER, WM_USER, PM_NOREMOVE);
 
         while (true) {
+            if (shouldClear) {
+                for (const auto& [id, _] : hotkeys) {
+                    UnregisterHotKey(NULL, id);
+                }
+                hotkeys.clear();
+                nextId = 1;
+                shouldClear = false;
+                std::cout << "[System] Hotkeys cleared in MessageLoop." << std::endl;
+            }
                      {
                 std::lock_guard<std::mutex> lock(queueMutex);
                 for (auto& req : registrationQueue) {
@@ -73,5 +85,11 @@ struct HotkeyManager {
     static void Add(int mods, int vk, sol::function cb, std::string windowTitle = "") {
         std::lock_guard<std::mutex> lock(queueMutex);
         registrationQueue.push_back({ mods, vk, cb, windowTitle });
+    }
+
+    static void Clear() {
+        shouldClear = true;
+        
+        while(shouldClear) { std::this_thread::yield(); }
     }
 };

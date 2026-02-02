@@ -35,6 +35,9 @@
 #include "InputManager.hpp"
 #include "WindowManager.hpp"
 #include "KeyCodes.hpp"
+#include "Directory.hpp"
+
+std::atomic<bool> needReload = false;
 
 /** @brief Internal API Registration */
 void SetupLuaEnvironment(sol::state& lua) {
@@ -54,20 +57,47 @@ void SetupLuaEnvironment(sol::state& lua) {
     KeyCodes::Bind(lua);
 }
 
+void ResetLuaEnvironment(sol::state& lua) {
+    lua.collect_garbage();
+    SetupLuaEnvironment(lua);
+}
+
 int main() {
+    EventDispatcher dispatcher;
+
+    dispatcher.subscribe("OnDirectoryChange", [&]() {
+        needReload = true;
+    });
+    
     std::thread msgThread(HotkeyManager::MessageLoop);
     msgThread.detach();
 
-    sol::state lua;
-    SetupLuaEnvironment(lua);
+    std::thread dirThread(Directory::DirectoryChangesLoop, L"scripts", std::ref(dispatcher));
+    dirThread.detach();
 
     const std::string path = "scripts/main.lua";
-    if (std::filesystem::exists(path)) {
-        try { lua.script_file(path); } 
-        catch (const sol::error& e) { std::cerr << "[Lua Error] " << e.what() << std::endl; }
+
+    while (true) {
+        sol::state lua;
+        SetupLuaEnvironment(lua);
+        needReload = false;
+
+        std::cout << "[System] Loading script..." << std::endl;
+
+        try { 
+            lua.script_file(path); 
+        } 
+        catch (const sol::error& e) { 
+            std::cerr << "[Lua Error] " << e.what() << std::endl; 
+        }
+        
+        while (!needReload) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        }
+
+        std::cout << "[System] Reloading environment..." << std::endl;
+        HotkeyManager::Clear();
     }
 
-    std::cout << "Engine active. Press Enter to stop." << std::endl;
-    std::cin.get();
     return 0;
 }
