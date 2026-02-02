@@ -5,8 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MoonKey: HotkeyManager Struct Reference</title>
+<title>MoonKey: HotkeyManager Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
@@ -16,10 +17,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
@@ -30,6 +37,18 @@
    </div>
   </td>
  </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td></tr>
  </tbody>
 </table>
 </div>
@@ -40,19 +59,7 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */
-</script>
-<div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
     <div id="nav-tree-contents">
       <div id="nav-sync" class="sync"></div>
@@ -94,35 +101,49 @@ $(document).ready(function(){initNavTree('structHotkeyManager.html',''); initRes
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="structHotkeyManager-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">HotkeyManager Struct Reference</div></div>
+  <div class="headertitle"><div class="title">HotkeyManager Class Reference<div class="ingroups"><a class="el" href="group__hotkey__manager.html">Hotkey Manager</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manages global hotkey registration and Windows message processing.  
+ <a href="structHotkeyManager.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="HotkeyManager_8hpp_source.html">HotkeyManager.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a2eee803e867d2c8c5f279a17cdfe0025" id="r_a2eee803e867d2c8c5f279a17cdfe0025"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a2eee803e867d2c8c5f279a17cdfe0025">MessageLoop</a> ()</td></tr>
+<tr class="memdesc:a2eee803e867d2c8c5f279a17cdfe0025"><td class="mdescLeft">&#160;</td><td class="mdescRight">Windows message processing loop.  <br /></td></tr>
 <tr class="separator:a2eee803e867d2c8c5f279a17cdfe0025"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a447983e174091d2020d50222f8823b24" id="r_a447983e174091d2020d50222f8823b24"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a447983e174091d2020d50222f8823b24">Add</a> (int mods, int vk, sol::function cb, std::string windowTitle=&quot;&quot;)</td></tr>
+<tr class="memdesc:a447983e174091d2020d50222f8823b24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a hotkey from Lua.  <br /></td></tr>
 <tr class="separator:a447983e174091d2020d50222f8823b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e84b8a230296d3d5883fd5927d54564" id="r_a2e84b8a230296d3d5883fd5927d54564"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a2e84b8a230296d3d5883fd5927d54564">Clear</a> ()</td></tr>
+<tr class="memdesc:a2e84b8a230296d3d5883fd5927d54564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all registered hotkeys.  <br /></td></tr>
 <tr class="separator:a2e84b8a230296d3d5883fd5927d54564"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a37822019c945ba3146e23be6a8b53ca1" id="r_a37822019c945ba3146e23be6a8b53ca1"><td class="memItemLeft" align="right" valign="top">static std::map&lt; int, <a class="el" href="structHotKeyData.html">HotKeyData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a37822019c945ba3146e23be6a8b53ca1">hotkeys</a></td></tr>
+<tr class="memdesc:a37822019c945ba3146e23be6a8b53ca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registered hotkeys by ID.  <br /></td></tr>
 <tr class="separator:a37822019c945ba3146e23be6a8b53ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e6d922719fbf1859971306e5537a785" id="r_a1e6d922719fbf1859971306e5537a785"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a1e6d922719fbf1859971306e5537a785">nextId</a> = 1</td></tr>
+<tr class="memdesc:a1e6d922719fbf1859971306e5537a785"><td class="mdescLeft">&#160;</td><td class="mdescRight">Next available hotkey ID.  <br /></td></tr>
 <tr class="separator:a1e6d922719fbf1859971306e5537a785"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a078e8e91dd4c965ad3beb0c6c29f037a" id="r_a078e8e91dd4c965ad3beb0c6c29f037a"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; <a class="el" href="structHotkeyRequest.html">HotkeyRequest</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a078e8e91dd4c965ad3beb0c6c29f037a">registrationQueue</a></td></tr>
+<tr class="memdesc:a078e8e91dd4c965ad3beb0c6c29f037a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue for thread-safe registration.  <br /></td></tr>
 <tr class="separator:a078e8e91dd4c965ad3beb0c6c29f037a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0bfd1d6929b1593371d22f51b912a84" id="r_ab0bfd1d6929b1593371d22f51b912a84"><td class="memItemLeft" align="right" valign="top">static std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#ab0bfd1d6929b1593371d22f51b912a84">queueMutex</a></td></tr>
+<tr class="memdesc:ab0bfd1d6929b1593371d22f51b912a84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex for queue synchronization.  <br /></td></tr>
 <tr class="separator:ab0bfd1d6929b1593371d22f51b912a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a466d17fece329ecbb9bc04282bf74f16" id="r_a466d17fece329ecbb9bc04282bf74f16"><td class="memItemLeft" align="right" valign="top">static std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a466d17fece329ecbb9bc04282bf74f16">shouldClear</a> = false</td></tr>
+<tr class="memdesc:a466d17fece329ecbb9bc04282bf74f16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to clear all hotkeys.  <br /></td></tr>
 <tr class="separator:a466d17fece329ecbb9bc04282bf74f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Manages global hotkey registration and Windows message processing. </p>
+<p>The <a class="el" href="structHotkeyManager.html" title="Manages global hotkey registration and Windows message processing.">HotkeyManager</a> runs a separate thread to process Windows messages and execute hotkey callbacks. It supports both global hotkeys and context-sensitive hotkeys tied to specific windows. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a447983e174091d2020d50222f8823b24" name="a447983e174091d2020d50222f8823b24"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a447983e174091d2020d50222f8823b24">&#9670;&#160;</a></span>Add()</h2>
 
@@ -169,6 +190,18 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Registers a hotkey from Lua. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mods</td><td>Modifier keys (MOD.ALT, MOD.CTRL, etc.) </td></tr>
+    <tr><td class="paramname">vk</td><td>Virtual key code </td></tr>
+    <tr><td class="paramname">cb</td><td>Lua callback function </td></tr>
+    <tr><td class="paramname">windowTitle</td><td>Optional window title for context-sensitive hotkeys</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function is thread-safe and adds hotkey requests to a queue for processing in the message loop thread. </p>
+
 </div>
 </div>
 <a id="a2e84b8a230296d3d5883fd5927d54564" name="a2e84b8a230296d3d5883fd5927d54564"></a>
@@ -193,6 +226,9 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Clears all registered hotkeys. </p>
+<p>Used during script reload to clean up old hotkeys </p>
 
 </div>
 </div>
@@ -219,6 +255,15 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Windows message processing loop. </p>
+<p>Runs in a separate thread to handle WM_HOTKEY messages</p>
+<p>This function:</p><ol type="1">
+<li>Processes hotkey registration requests from the queue</li>
+<li>Handles WM_HOTKEY messages from Windows</li>
+<li>Executes appropriate Lua callbacks</li>
+<li>Supports hotkey clearing on script reload </li>
+</ol>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -242,6 +287,8 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Registered hotkeys by ID. </p>
+
 </div>
 </div>
 <a id="a1e6d922719fbf1859971306e5537a785" name="a1e6d922719fbf1859971306e5537a785"></a>
@@ -263,6 +310,8 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Next available hotkey ID. </p>
 
 </div>
 </div>
@@ -286,6 +335,8 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Mutex for queue synchronization. </p>
+
 </div>
 </div>
 <a id="a078e8e91dd4c965ad3beb0c6c29f037a" name="a078e8e91dd4c965ad3beb0c6c29f037a"></a>
@@ -307,6 +358,8 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Queue for thread-safe registration. </p>
 
 </div>
 </div>
@@ -330,9 +383,11 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Flag to clear all hotkeys. </p>
+
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/<a class="el" href="HotkeyManager_8hpp_source.html">HotkeyManager.hpp</a></li>
 </ul>
 </div><!-- contents -->

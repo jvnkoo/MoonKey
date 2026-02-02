@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>MoonKey: Directory Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
@@ -16,10 +17,16 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
 <div id="titlearea">
 <table cellspacing="0" cellpadding="0">
@@ -30,6 +37,18 @@
    </div>
   </td>
  </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td></tr>
  </tbody>
 </table>
 </div>
@@ -40,19 +59,7 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */
-</script>
-<div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
     <div id="nav-tree-contents">
       <div id="nav-sync" class="sync"></div>
@@ -97,14 +104,23 @@ $(document).ready(function(){initNavTree('structDirectory.html',''); initResizab
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="structDirectory.html" title="Directory monitoring for hot-reload functionality.">Directory</a> monitoring for hot-reload functionality.  
+ <a href="structDirectory.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Directory_8hpp_source.html">Directory.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a19b6b297deb5edb9cc59d2968d9afa59" id="r_a19b6b297deb5edb9cc59d2968d9afa59"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDirectory.html#a19b6b297deb5edb9cc59d2968d9afa59">DirectoryChangesLoop</a> (winrt::hstring directoryPath, <a class="el" href="classEventDispatcher.html">EventDispatcher</a> &amp;eventDispatcher)</td></tr>
+<tr class="memdesc:a19b6b297deb5edb9cc59d2968d9afa59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monitor directory for changes.  <br /></td></tr>
 <tr class="separator:a19b6b297deb5edb9cc59d2968d9afa59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="structDirectory.html" title="Directory monitoring for hot-reload functionality.">Directory</a> monitoring for hot-reload functionality. </p>
+<p>Monitors a directory for file changes using Windows ReadDirectoryChangesW API. Triggers reload events when Lua scripts are modified.</p>
+<p>Static class for directory change monitoring</p>
+<p>Runs in a dedicated thread to monitor file system changes without blocking the main application thread. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a19b6b297deb5edb9cc59d2968d9afa59" name="a19b6b297deb5edb9cc59d2968d9afa59"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a19b6b297deb5edb9cc59d2968d9afa59">&#9670;&#160;</a></span>DirectoryChangesLoop()</h2>
 
@@ -138,6 +154,22 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Monitor directory for changes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">directoryPath</td><td><a class="el" href="structDirectory.html" title="Directory monitoring for hot-reload functionality.">Directory</a> to monitor (wide string) </td></tr>
+    <tr><td class="paramname">eventDispatcher</td><td>Event dispatcher for change notifications</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Continuously monitors the specified directory for file modifications and creation/deletion events. When changes are detected, dispatches "OnDirectoryChange" event.</p>
+<dl class="section note"><dt>Note</dt><dd>Runs in an infinite loop - should be executed in a separate thread </dd>
+<dd>
+Only monitors for FILE_NOTIFY_CHANGE_LAST_WRITE and FILE_NOTIFY_CHANGE_FILE_NAME events</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Uses blocking I/O - ensure directory path is valid </dd>
+<dd>
+High-frequency file changes may cause event storms </dd></dl>
 
 </div>
 </div>

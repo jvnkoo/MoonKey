@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['codes_0',['Key &amp; Modifier Codes',['../keys_page.html',1,'']]]
+  ['key_20modifier_20reference_0',['Key &amp; Modifier Reference',['../keys_page.html',1,'']]]
 ];

@@ -25,11 +25,9 @@
 var NAVTREE =
 [
   [ "MoonKey", "index.html", [
-    [ "API Reference", "index.html", null ],
-    [ "Key & Modifier Codes", "keys_page.html", [
-      [ "MOD (Modifiers)", "keys_page.html#mod_sec", null ],
-      [ "KEY (Virtual Keys)", "keys_page.html#key_sec", null ]
-    ] ],
+    [ "User Documentation", "index.html", null ],
+    [ "Key & Modifier Reference", "keys_page.html", null ],
+    [ "Topics", "topics.html", "topics" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [

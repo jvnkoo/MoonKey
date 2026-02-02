@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reference_0',['API Reference',['../index.html',1,'']]]
+  ['user_20documentation_0',['User Documentation',['../index.html',1,'']]]
 ];
