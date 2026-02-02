@@ -1,5 +1,5 @@
 # MoonKey
-![C++](https://img.shields.io/badge/C%2B%2B-17-00599C?logo=cplusplus)
+![C++](https://img.shields.io/badge/C%2B%2B-20-00599C?logo=cplusplus)
 ![Lua](https://img.shields.io/badge/Lua-5.4-2C2D72?logo=lua)
 ![Platform](https://img.shields.io/badge/Platform-Windows-0078D4?logo=windows)
 ![License](https://img.shields.io/badge/License-GPL--3.0-blue)
@@ -17,12 +17,12 @@ MoonKey is a lightweight automation engine that bridges Windows system calls wit
 > [!TIP]
 > Complete API documentation, including a full list of supported keys and modifiers, is available on [GitHub Pages](https://jvnkoo.github.io/MoonKey/).
 
-## Lua API
+## Basic Lua API
 
 | Function | Description | Example |
 | --- | --- | --- |
 | `log(msg)` | Prints message to console | `log("Action triggered")` |
-| `bind(mod, key, fn)` | Registers a global hotkey | `bind(MOD.ALT, KEY.F1, function() ... end)` |
+| `bind(mod, key, fn, wtitle)` | Registers a global hotkey. Window title is optional. | `bind(MOD.ALT, KEY.F1, function() ... end, "Notepad")` |
 | `send(key)` | Simulates a single key tap | `send(KEY.ENTER)` |
 | `focus(title)` | Brings window to foreground | `focus("Notepad")` |
 | `write(text)` | Types a string of text | `write("Hello World")` |
