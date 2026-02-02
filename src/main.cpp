@@ -1,29 +1,54 @@
 /**
- * @mainpage API Reference
- *
+ * @mainpage User Documentation
+ * 
+ * ## Overview
+ * MoonKey provides automation capabilities through Lua scripting. 
+ * Scripts execute in a managed environment with hot-reload functionality.
+ * 
+ * 
+ * ## Quick Start
+ * 
+ * 1. Create a `scripts` folder in the same directory as the executable
+ * 2. Create `main.lua` inside that folder
+ * 3. Write your automation script using the API below
+ * 4. Run the executable - it will automatically reload when you save your script
+ * 
  * ### Core Functions
- *
+ * 
  * | Function | Description | Example |
  * | :--- | :--- | :--- |
  * | **log** | Prints a message to console | `log("System ready")` |
- * | **bind** | Registers a global hotkey. Window title is optional. See @ref keys_page "Full Key List". | `bind(MOD.ALT, KEY.F1, function() end, "Notepad")` |
- * | **send** | Simulates a key tap. See @ref keys_page "Full Key List". | `send(KEY.ENTER)` |
+ * | **bind** | Registers a global hotkey. Window title is optional | `bind(MOD.ALT, KEY.F1, function() end, "Notepad")` |
+ * | **send** | Simulates a key press | `send(KEY.ENTER)` |
  * | **focus** | Brings window to foreground | `focus("Notepad")` |
- * | **write** | Types a string of text | `write("Hello, World!")` |
+ * | **write** | Types text | `write("Hello, World!")` |
  * | **wait** | Pauses script (seconds) | `wait(1.5)` |
- * | **sleep** | Pauses script (ms) | `sleep(500)` |
- * | **mouse_move** | Sets cursor to absolute X, Y | `mouse_move(1920, 1080)` |
- * | **mouse_click** | Clicks (0: Left, 1: Right, 2: Mid) | `mouse_click(0)` |
- * | **mouse_pos** | Returns table with current {x, y} | `local p = mouse_pos()` |
- *
- * ---
- * ### Quick Example
+ * | **sleep** | Pauses script (milliseconds) | `sleep(500)` |
+ * | **mouse_move** | Moves cursor to X, Y coordinates | `mouse_move(1920, 1080)` |
+ * | **mouse_click** | Clicks mouse button | `mouse_click(0)` |
+ * | **mouse_pos** | Returns current mouse position | `local p = mouse_pos()` |
+ * 
+ * ## Example Script
+ * 
  * @code
+ * -- Simple automation example
  * bind(MOD.ALT, KEY.T, function()
- * focus("Notepad")
- * write("Done!")
+ *     focus("Notepad")
+ *     write("Automation complete!")
+ *     send(KEY.ENTER)
+ * end)
+ * 
+ * -- Wait and click
+ * bind(MOD.CTRL + MOD.SHIFT, KEY.M, function()
+ *     mouse_move(100, 100)
+ *     wait(0.5)
+ *     mouse_click(0)
  * end)
  * @endcode
+ * 
+ * ## Key Reference
+ * 
+ * See @ref keys_page for complete list of available keys and modifiers.
  */
 
 #include <sol/sol.hpp>
@@ -39,7 +64,12 @@
 
 std::atomic<bool> needReload = false;
 
-/** @brief Internal API Registration */
+/** 
+ * @brief Initializes the Lua environment with all API functions
+ * @internal
+ * This function is for internal use only and sets up the Lua state
+ * with all exposed C++ functions and constants.
+ */
 void SetupLuaEnvironment(sol::state& lua) {
     lua.open_libraries(sol::lib::base, sol::lib::package, sol::lib::string);
 
@@ -57,14 +87,26 @@ void SetupLuaEnvironment(sol::state& lua) {
     KeyCodes::Bind(lua);
 }
 
+/**
+ * @brief Cleans and reinitializes the Lua environment
+ * @internal
+ * Called during hot-reload to reset the scripting environment.
+ */
 void ResetLuaEnvironment(sol::state& lua) {
     lua.collect_garbage();
     SetupLuaEnvironment(lua);
 }
 
+/** 
+ * @brief Main application entry point
+ * @return Exit code
+ * 
+ * Initializes all subsystems and runs the main loop with hot-reload capability.
+ */
 int main() {
     EventDispatcher dispatcher;
 
+    // Subscribe for hot-reload 
     dispatcher.subscribe("OnDirectoryChange", [&]() {
         needReload = true;
     });
@@ -72,6 +114,7 @@ int main() {
     std::thread msgThread(HotkeyManager::MessageLoop);
     msgThread.detach();
 
+    // Start directory monitoring thread
     std::thread dirThread(Directory::DirectoryChangesLoop, L"scripts", std::ref(dispatcher));
     dirThread.detach();
 
