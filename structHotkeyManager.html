@@ -106,6 +106,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a2eee803e867d2c8c5f279a17cdfe0025"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a447983e174091d2020d50222f8823b24" id="r_a447983e174091d2020d50222f8823b24"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a447983e174091d2020d50222f8823b24">Add</a> (int mods, int vk, sol::function cb, std::string windowTitle=&quot;&quot;)</td></tr>
 <tr class="separator:a447983e174091d2020d50222f8823b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e84b8a230296d3d5883fd5927d54564" id="r_a2e84b8a230296d3d5883fd5927d54564"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a2e84b8a230296d3d5883fd5927d54564">Clear</a> ()</td></tr>
+<tr class="separator:a2e84b8a230296d3d5883fd5927d54564"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -117,6 +119,8 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a078e8e91dd4c965ad3beb0c6c29f037a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0bfd1d6929b1593371d22f51b912a84" id="r_ab0bfd1d6929b1593371d22f51b912a84"><td class="memItemLeft" align="right" valign="top">static std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#ab0bfd1d6929b1593371d22f51b912a84">queueMutex</a></td></tr>
 <tr class="separator:ab0bfd1d6929b1593371d22f51b912a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a466d17fece329ecbb9bc04282bf74f16" id="r_a466d17fece329ecbb9bc04282bf74f16"><td class="memItemLeft" align="right" valign="top">static std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a466d17fece329ecbb9bc04282bf74f16">shouldClear</a> = false</td></tr>
+<tr class="separator:a466d17fece329ecbb9bc04282bf74f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a447983e174091d2020d50222f8823b24" name="a447983e174091d2020d50222f8823b24"></a>
@@ -156,6 +160,31 @@ Static Public Attributes</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2e84b8a230296d3d5883fd5927d54564" name="a2e84b8a230296d3d5883fd5927d54564"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e84b8a230296d3d5883fd5927d54564">&#9670;&#160;</a></span>Clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void HotkeyManager::Clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -270,6 +299,28 @@ Static Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt;<a class="el" href="structHotkeyRequest.html">HotkeyRequest</a>&gt; HotkeyManager::registrationQueue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a466d17fece329ecbb9bc04282bf74f16" name="a466d17fece329ecbb9bc04282bf74f16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a466d17fece329ecbb9bc04282bf74f16">&#9670;&#160;</a></span>shouldClear</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic&lt;bool&gt; HotkeyManager::shouldClear = false</td>
         </tr>
       </table>
   </td>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vk_0',['vk',['../structHotkeyRequest.html#a725149c0a0d0ed4dd6714e9faba4c1e9',1,'HotkeyRequest']]]
+  ['targetwindow_0',['targetWindow',['../structHotKeyData.html#aa4c39ee3601446ad3c127d472cb96c95',1,'HotKeyData']]]
 ];

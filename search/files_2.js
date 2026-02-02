@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['keycodes_2ehpp_0',['KeyCodes.hpp',['../KeyCodes_8hpp.html',1,'']]]
+  ['hotkeymanager_2ehpp_0',['HotkeyManager.hpp',['../HotkeyManager_8hpp.html',1,'']]]
 ];

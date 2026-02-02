@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['reference_0',['API Reference',['../index.html',1,'']]],
-  ['registrationqueue_1',['registrationQueue',['../structHotkeyManager.html#a078e8e91dd4c965ad3beb0c6c29f037a',1,'HotkeyManager']]]
+  ['queuemutex_0',['queueMutex',['../structHotkeyManager.html#ab0bfd1d6929b1593371d22f51b912a84',1,'HotkeyManager']]],
+  ['quick_20example_1',['Quick Example',['../index.html#autotoc_md2',1,'']]]
 ];

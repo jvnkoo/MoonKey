@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['inputmanager_0',['InputManager',['../structInputManager.html',1,'']]]
+  ['eventdispatcher_0',['EventDispatcher',['../classEventDispatcher.html',1,'']]]
 ];
