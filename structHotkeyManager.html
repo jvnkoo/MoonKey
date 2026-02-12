@@ -112,15 +112,15 @@ $(document).ready(function(){initNavTree('structHotkeyManager.html',''); initRes
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a2eee803e867d2c8c5f279a17cdfe0025" id="r_a2eee803e867d2c8c5f279a17cdfe0025"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a2eee803e867d2c8c5f279a17cdfe0025">MessageLoop</a> ()</td></tr>
-<tr class="memdesc:a2eee803e867d2c8c5f279a17cdfe0025"><td class="mdescLeft">&#160;</td><td class="mdescRight">Windows message processing loop.  <br /></td></tr>
-<tr class="separator:a2eee803e867d2c8c5f279a17cdfe0025"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a447983e174091d2020d50222f8823b24" id="r_a447983e174091d2020d50222f8823b24"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a447983e174091d2020d50222f8823b24">Add</a> (int mods, int vk, sol::function cb, std::string windowTitle=&quot;&quot;)</td></tr>
-<tr class="memdesc:a447983e174091d2020d50222f8823b24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a hotkey from Lua.  <br /></td></tr>
-<tr class="separator:a447983e174091d2020d50222f8823b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e84b8a230296d3d5883fd5927d54564" id="r_a2e84b8a230296d3d5883fd5927d54564"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a2e84b8a230296d3d5883fd5927d54564">Clear</a> ()</td></tr>
-<tr class="memdesc:a2e84b8a230296d3d5883fd5927d54564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all registered hotkeys.  <br /></td></tr>
-<tr class="separator:a2e84b8a230296d3d5883fd5927d54564"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e80a6572a2201f3f83bf4e0517b142e" id="r_a4e80a6572a2201f3f83bf4e0517b142e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a4e80a6572a2201f3f83bf4e0517b142e">MessageLoop</a> ()</td></tr>
+<tr class="memdesc:a4e80a6572a2201f3f83bf4e0517b142e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Windows message processing loop.  <br /></td></tr>
+<tr class="separator:a4e80a6572a2201f3f83bf4e0517b142e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a525ccb0b744c8f832efff99a92cab2ef" id="r_a525ccb0b744c8f832efff99a92cab2ef"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a525ccb0b744c8f832efff99a92cab2ef">Add</a> (int mods, int vk, sol::function cb, std::string windowTitle=&quot;&quot;)</td></tr>
+<tr class="memdesc:a525ccb0b744c8f832efff99a92cab2ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a hotkey from Lua.  <br /></td></tr>
+<tr class="separator:a525ccb0b744c8f832efff99a92cab2ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e3c215049e27497bff2e3044e02171f" id="r_a7e3c215049e27497bff2e3044e02171f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHotkeyManager.html#a7e3c215049e27497bff2e3044e02171f">Clear</a> ()</td></tr>
+<tr class="memdesc:a7e3c215049e27497bff2e3044e02171f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all registered hotkeys.  <br /></td></tr>
+<tr class="separator:a7e3c215049e27497bff2e3044e02171f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -142,10 +142,12 @@ Static Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages global hotkey registration and Windows message processing. </p>
-<p>The <a class="el" href="structHotkeyManager.html" title="Manages global hotkey registration and Windows message processing.">HotkeyManager</a> runs a separate thread to process Windows messages and execute hotkey callbacks. It supports both global hotkeys and context-sensitive hotkeys tied to specific windows. </p>
+<ul>
+<li>The <a class="el" href="structHotkeyManager.html" title="Manages global hotkey registration and Windows message processing.">HotkeyManager</a> runs a separate thread to process Windows messages and execute hotkey callbacks. It supports both global hotkeys and context-sensitive hotkeys tied to specific windows. </li>
+</ul>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a447983e174091d2020d50222f8823b24" name="a447983e174091d2020d50222f8823b24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a447983e174091d2020d50222f8823b24">&#9670;&#160;</a></span>Add()</h2>
+<a id="a525ccb0b744c8f832efff99a92cab2ef" name="a525ccb0b744c8f832efff99a92cab2ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a525ccb0b744c8f832efff99a92cab2ef">&#9670;&#160;</a></span>Add()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,7 +156,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void HotkeyManager::Add </td>
+          <td class="memname">void HotkeyManager::Add </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>mods</em>, </td>
@@ -185,7 +187,7 @@ Static Public Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -196,16 +198,15 @@ Static Public Attributes</h2></td></tr>
     <tr><td class="paramname">mods</td><td>Modifier keys (MOD.ALT, MOD.CTRL, etc.) </td></tr>
     <tr><td class="paramname">vk</td><td>Virtual key code </td></tr>
     <tr><td class="paramname">cb</td><td>Lua callback function </td></tr>
-    <tr><td class="paramname">windowTitle</td><td>Optional window title for context-sensitive hotkeys</td></tr>
+    <tr><td class="paramname">windowTitle</td><td>Optional window title for context-sensitive hotkeys </td></tr>
   </table>
   </dd>
 </dl>
-<p>This function is thread-safe and adds hotkey requests to a queue for processing in the message loop thread. </p>
 
 </div>
 </div>
-<a id="a2e84b8a230296d3d5883fd5927d54564" name="a2e84b8a230296d3d5883fd5927d54564"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e84b8a230296d3d5883fd5927d54564">&#9670;&#160;</a></span>Clear()</h2>
+<a id="a7e3c215049e27497bff2e3044e02171f" name="a7e3c215049e27497bff2e3044e02171f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e3c215049e27497bff2e3044e02171f">&#9670;&#160;</a></span>Clear()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -214,7 +215,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void HotkeyManager::Clear </td>
+          <td class="memname">void HotkeyManager::Clear </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -222,7 +223,7 @@ Static Public Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -232,8 +233,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a2eee803e867d2c8c5f279a17cdfe0025" name="a2eee803e867d2c8c5f279a17cdfe0025"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2eee803e867d2c8c5f279a17cdfe0025">&#9670;&#160;</a></span>MessageLoop()</h2>
+<a id="a4e80a6572a2201f3f83bf4e0517b142e" name="a4e80a6572a2201f3f83bf4e0517b142e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e80a6572a2201f3f83bf4e0517b142e">&#9670;&#160;</a></span>MessageLoop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -242,7 +243,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void HotkeyManager::MessageLoop </td>
+          <td class="memname">void HotkeyManager::MessageLoop </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -250,19 +251,13 @@ Static Public Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Windows message processing loop. </p>
-<p>Runs in a separate thread to handle WM_HOTKEY messages</p>
-<p>This function:</p><ol type="1">
-<li>Processes hotkey registration requests from the queue</li>
-<li>Handles WM_HOTKEY messages from Windows</li>
-<li>Executes appropriate Lua callbacks</li>
-<li>Supports hotkey clearing on script reload </li>
-</ol>
+<p>Runs in a separate thread to handle WM_HOTKEY messages </p>
 
 </div>
 </div>
@@ -387,8 +382,9 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/<a class="el" href="HotkeyManager_8hpp_source.html">HotkeyManager.hpp</a></li>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>src/core/<a class="el" href="HotkeyManager_8hpp_source.html">HotkeyManager.hpp</a></li>
+<li>src/core/<a class="el" href="HotkeyManager_8cpp.html">HotkeyManager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

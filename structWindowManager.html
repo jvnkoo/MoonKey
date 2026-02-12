@@ -111,21 +111,24 @@ $(document).ready(function(){initNavTree('structWindowManager.html',''); initRes
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a727518ec840a395bd377835e91eed1d8" id="r_a727518ec840a395bd377835e91eed1d8"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWindowManager.html#a727518ec840a395bd377835e91eed1d8">GetActiveWindowTitle</a> ()</td></tr>
-<tr class="memdesc:a727518ec840a395bd377835e91eed1d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get title of currently active window.  <br /></td></tr>
-<tr class="separator:a727518ec840a395bd377835e91eed1d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d2902d688af9c5d4e700ad320146ab5" id="r_a6d2902d688af9c5d4e700ad320146ab5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWindowManager.html#a6d2902d688af9c5d4e700ad320146ab5">SetFocusToWindow</a> (std::string windowTitle)</td></tr>
-<tr class="memdesc:a6d2902d688af9c5d4e700ad320146ab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bring window to foreground and give it focus.  <br /></td></tr>
-<tr class="separator:a6d2902d688af9c5d4e700ad320146ab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23d8316557cb1ba3ac68210317fe681c" id="r_a23d8316557cb1ba3ac68210317fe681c"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWindowManager.html#a23d8316557cb1ba3ac68210317fe681c">GetActiveWindowTitle</a> ()</td></tr>
+<tr class="memdesc:a23d8316557cb1ba3ac68210317fe681c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get title of currently active window.  <br /></td></tr>
+<tr class="separator:a23d8316557cb1ba3ac68210317fe681c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec4b11d77af1789b80b7a0ed32bc3ca1" id="r_aec4b11d77af1789b80b7a0ed32bc3ca1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structWindowManager.html#aec4b11d77af1789b80b7a0ed32bc3ca1">SetFocusToWindow</a> (std::string windowTitle)</td></tr>
+<tr class="memdesc:aec4b11d77af1789b80b7a0ed32bc3ca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bring window to foreground and give it focus.  <br /></td></tr>
+<tr class="separator:aec4b11d77af1789b80b7a0ed32bc3ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Window management and focus control. </p>
-<p>Provides functionality to find, activate, and manage application windows using Windows API functions.</p>
-<p>Static methods for window operations</p>
-<p>Supports finding windows by title and bringing them to foreground. All methods are thread-safe. </p>
+<ul>
+<li>Provides functionality to find, activate, and manage application windows using Windows API functions.</li>
+</ul>
+<p>Static methods for window operations</p><ul>
+<li>Supports finding windows by title and bringing them to foreground. All methods are thread-safe. </li>
+</ul>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a727518ec840a395bd377835e91eed1d8" name="a727518ec840a395bd377835e91eed1d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a727518ec840a395bd377835e91eed1d8">&#9670;&#160;</a></span>GetActiveWindowTitle()</h2>
+<a id="a23d8316557cb1ba3ac68210317fe681c" name="a23d8316557cb1ba3ac68210317fe681c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23d8316557cb1ba3ac68210317fe681c">&#9670;&#160;</a></span>GetActiveWindowTitle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -134,7 +137,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static std::string WindowManager::GetActiveWindowTitle </td>
+          <td class="memname">std::string WindowManager::GetActiveWindowTitle </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -142,22 +145,28 @@ Static Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Get title of currently active window. </p>
-<dl class="section return"><dt>Returns</dt><dd>Window title as string</dd></dl>
-<p>Retrieves the title of the foreground window (window with user focus). Returns empty string if no window is active or title cannot be retrieved.</p>
+<dl class="section return"><dt>Returns</dt><dd>Window title as string<ul>
+<li>Retrieves the title of the foreground window (window with user focus). Returns empty string if no window is active or title cannot be retrieved.</li>
+<li></li>
+</ul>
+</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Uses GetForegroundWindow() and GetWindowTextA() </dd>
 <dd>
-Maximum title length is 255 characters </dd></dl>
+Maximum title length is 255 characters<ul>
+<li></li>
+</ul>
+</dd></dl>
 
 </div>
 </div>
-<a id="a6d2902d688af9c5d4e700ad320146ab5" name="a6d2902d688af9c5d4e700ad320146ab5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d2902d688af9c5d4e700ad320146ab5">&#9670;&#160;</a></span>SetFocusToWindow()</h2>
+<a id="aec4b11d77af1789b80b7a0ed32bc3ca1" name="aec4b11d77af1789b80b7a0ed32bc3ca1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec4b11d77af1789b80b7a0ed32bc3ca1">&#9670;&#160;</a></span>SetFocusToWindow()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -166,7 +175,7 @@ Maximum title length is 255 characters </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void WindowManager::SetFocusToWindow </td>
+          <td class="memname">void WindowManager::SetFocusToWindow </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>windowTitle</em></td><td>)</td>
@@ -175,7 +184,7 @@ Maximum title length is 255 characters </dd></dl>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -183,30 +192,43 @@ Maximum title length is 255 characters </dd></dl>
 <p>Bring window to foreground and give it focus. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">windowTitle</td><td>Window title or class name to find</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Searches for a window with the specified title or class name and attempts to bring it to the foreground. Tries two search methods:</p><ol type="1">
+    <tr><td class="paramname">windowTitle</td><td>Window title or class name to find<ul>
+<li>Searches for a window with the specified title or class name and attempts to bring it to the foreground. Tries two search methods:</li>
+</ul>
+<ol type="1">
 <li>By window title (caption)</li>
 <li>By window class name</li>
 </ol>
+<ul>
+<li></li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section note"><dt>Note</dt><dd>Uses FindWindow() with NULL class name, then with NULL window name </dd>
 <dd>
 Shows window with SW_RESTORE if minimized </dd>
 <dd>
-May fail due to Windows security restrictions on foreground changes</dd></dl>
+May fail due to Windows security restrictions on foreground changes<ul>
+<li></li>
+</ul>
+</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Some applications block foreground window changes for security </dd>
 <dd>
-UWP/Store apps may not be accessible with this method</dd></dl>
-<div class="fragment"><div class="line">focus(<span class="stringliteral">&quot;Notepad&quot;</span>)                 <span class="comment">// Find by title</span></div>
+UWP/Store apps may not be accessible with this method<ul>
+<li><div class="fragment"><div class="line">focus(<span class="stringliteral">&quot;Notepad&quot;</span>)                 <span class="comment">// Find by title</span></div>
 <div class="line">focus(&quot;Notepad++&quot;)              <span class="comment">// Find Notepad++ window</span></div>
 <div class="line">focus(&quot;Chrome_WidgetWin_1&quot;)    <span class="comment">// Find by class name</span></div>
-</div><!-- fragment --> 
+</div><!-- fragment --> </li>
+</ul>
+</dd></dl>
+
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/<a class="el" href="WindowManager_8hpp_source.html">WindowManager.hpp</a></li>
+<hr/>The documentation for this struct was generated from the following files:<ul>
+<li>src/api/<a class="el" href="WindowManager_8hpp_source.html">WindowManager.hpp</a></li>
+<li>src/api/<a class="el" href="WindowManager_8cpp.html">WindowManager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

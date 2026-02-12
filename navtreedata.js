@@ -58,7 +58,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Directory_8hpp.html"
+"Directory_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

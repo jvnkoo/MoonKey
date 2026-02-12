@@ -111,18 +111,21 @@ $(document).ready(function(){initNavTree('structDirectory.html',''); initResizab
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a19b6b297deb5edb9cc59d2968d9afa59" id="r_a19b6b297deb5edb9cc59d2968d9afa59"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDirectory.html#a19b6b297deb5edb9cc59d2968d9afa59">DirectoryChangesLoop</a> (winrt::hstring directoryPath, <a class="el" href="classEventDispatcher.html">EventDispatcher</a> &amp;eventDispatcher)</td></tr>
-<tr class="memdesc:a19b6b297deb5edb9cc59d2968d9afa59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monitor directory for changes.  <br /></td></tr>
-<tr class="separator:a19b6b297deb5edb9cc59d2968d9afa59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf4b213e82069d1b465cf9b31478578b" id="r_acf4b213e82069d1b465cf9b31478578b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDirectory.html#acf4b213e82069d1b465cf9b31478578b">DirectoryChangesLoop</a> (winrt::hstring directoryPath, <a class="el" href="classEventDispatcher.html">EventDispatcher</a> &amp;eventDispatcher)</td></tr>
+<tr class="memdesc:acf4b213e82069d1b465cf9b31478578b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monitor directory for changes.  <br /></td></tr>
+<tr class="separator:acf4b213e82069d1b465cf9b31478578b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="structDirectory.html" title="Directory monitoring for hot-reload functionality.">Directory</a> monitoring for hot-reload functionality. </p>
-<p>Monitors a directory for file changes using Windows ReadDirectoryChangesW API. Triggers reload events when Lua scripts are modified.</p>
-<p>Static class for directory change monitoring</p>
-<p>Runs in a dedicated thread to monitor file system changes without blocking the main application thread. </p>
+<ul>
+<li>Monitors a directory for file changes using Windows ReadDirectoryChangesW API. Triggers reload events when Lua scripts are modified.</li>
+</ul>
+<p>Static class for directory change monitoring</p><ul>
+<li>Runs in a dedicated thread to monitor file system changes without blocking the main application thread. </li>
+</ul>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a19b6b297deb5edb9cc59d2968d9afa59" name="a19b6b297deb5edb9cc59d2968d9afa59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19b6b297deb5edb9cc59d2968d9afa59">&#9670;&#160;</a></span>DirectoryChangesLoop()</h2>
+<a id="acf4b213e82069d1b465cf9b31478578b" name="acf4b213e82069d1b465cf9b31478578b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf4b213e82069d1b465cf9b31478578b">&#9670;&#160;</a></span>DirectoryChangesLoop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -131,7 +134,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void Directory::DirectoryChangesLoop </td>
+          <td class="memname">void Directory::DirectoryChangesLoop </td>
           <td>(</td>
           <td class="paramtype">winrt::hstring&#160;</td>
           <td class="paramname"><em>directoryPath</em>, </td>
@@ -150,7 +153,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -159,22 +162,16 @@ Static Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">directoryPath</td><td><a class="el" href="structDirectory.html" title="Directory monitoring for hot-reload functionality.">Directory</a> to monitor (wide string) </td></tr>
-    <tr><td class="paramname">eventDispatcher</td><td>Event dispatcher for change notifications</td></tr>
+    <tr><td class="paramname">eventDispatcher</td><td>Event dispatcher for change notifications </td></tr>
   </table>
   </dd>
 </dl>
-<p>Continuously monitors the specified directory for file modifications and creation/deletion events. When changes are detected, dispatches "OnDirectoryChange" event.</p>
-<dl class="section note"><dt>Note</dt><dd>Runs in an infinite loop - should be executed in a separate thread </dd>
-<dd>
-Only monitors for FILE_NOTIFY_CHANGE_LAST_WRITE and FILE_NOTIFY_CHANGE_FILE_NAME events</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>Uses blocking I/O - ensure directory path is valid </dd>
-<dd>
-High-frequency file changes may cause event storms </dd></dl>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/<a class="el" href="Directory_8hpp_source.html">Directory.hpp</a></li>
+<hr/>The documentation for this struct was generated from the following files:<ul>
+<li>src/core/<a class="el" href="Directory_8hpp_source.html">Directory.hpp</a></li>
+<li>src/core/<a class="el" href="Directory_8cpp.html">Directory.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

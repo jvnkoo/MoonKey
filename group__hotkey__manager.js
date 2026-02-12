@@ -11,9 +11,9 @@ var group__hotkey__manager =
       [ "windowTitle", "structHotkeyRequest.html#a689d4ac03d262f250f94691d2fda9d50", null ]
     ] ],
     [ "HotkeyManager", "structHotkeyManager.html", [
-      [ "Add", "structHotkeyManager.html#a447983e174091d2020d50222f8823b24", null ],
-      [ "Clear", "structHotkeyManager.html#a2e84b8a230296d3d5883fd5927d54564", null ],
-      [ "MessageLoop", "structHotkeyManager.html#a2eee803e867d2c8c5f279a17cdfe0025", null ],
+      [ "Add", "structHotkeyManager.html#a525ccb0b744c8f832efff99a92cab2ef", null ],
+      [ "Clear", "structHotkeyManager.html#a7e3c215049e27497bff2e3044e02171f", null ],
+      [ "MessageLoop", "structHotkeyManager.html#a4e80a6572a2201f3f83bf4e0517b142e", null ],
       [ "hotkeys", "structHotkeyManager.html#a37822019c945ba3146e23be6a8b53ca1", null ],
       [ "nextId", "structHotkeyManager.html#a1e6d922719fbf1859971306e5537a785", null ],
       [ "queueMutex", "structHotkeyManager.html#ab0bfd1d6929b1593371d22f51b912a84", null ],
