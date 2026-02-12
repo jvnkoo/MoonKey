@@ -4,16 +4,20 @@ project(MoonKey LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Find packages installed via vcpkg
 find_package(lua REQUIRED)
 find_package(sol2 REQUIRED)
 
-add_executable(MoonKey src/main.cpp)
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+file(GLOB_RECURSE HEADERS "src/*.hpp")
 
-# Link everything together
+add_executable(MoonKey ${SOURCES} ${HEADERS})
+
+target_include_directories(MoonKey PRIVATE 
+    src
+    ${LUA_INCLUDE_DIR}
+)
+
 target_link_libraries(MoonKey PRIVATE sol2::sol2 ${LUA_LIBRARIES})
-
-target_include_directories(MoonKey PRIVATE ${LUA_INCLUDE_DIR})
 
 if(MINGW OR WIN32)
     target_link_options(MoonKey PRIVATE "-static-libgcc" "-static-libstdc++" "-static")

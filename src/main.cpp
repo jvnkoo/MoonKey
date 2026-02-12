@@ -56,11 +56,11 @@
 #include <filesystem>
 #include <thread>
 #include <chrono>
-#include "HotkeyManager.hpp"
-#include "InputManager.hpp"
-#include "WindowManager.hpp"
-#include "KeyCodes.hpp"
-#include "Directory.hpp"
+#include "core/HotkeyManager.hpp"
+#include "api/InputManager.hpp"
+#include "api/WindowManager.hpp"
+#include "utils/KeyCodes.hpp"
+#include "core/Directory.hpp"
 
 std::atomic<bool> needReload = false;
 
