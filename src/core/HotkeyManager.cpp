@@ -1,4 +1,5 @@
 #include "../core/HotkeyManager.hpp"
+#include "api/TimerManager.hpp"
 
 void HotkeyManager::MessageLoop() {
     MSG msg = { 0 };
@@ -28,6 +29,8 @@ void HotkeyManager::MessageLoop() {
             }
             registrationQueue.clear();
         }
+
+        TimerManager::Update();
 
         while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
             if (msg.message == WM_HOTKEY) {

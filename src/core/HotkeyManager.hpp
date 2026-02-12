@@ -17,6 +17,7 @@
 #include <mutex>
 #include <atomic>
 #include "../api/WindowManager.hpp"
+#include "../api/TimerManager.hpp"
 
 /** @brief Data structure for hotkey registration */
 struct HotKeyData {

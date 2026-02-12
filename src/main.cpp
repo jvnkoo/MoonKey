@@ -18,7 +18,7 @@
  * | Function | Description | Example |
  * | :--- | :--- | :--- |
  * | **log** | Prints a message to console | `log("System ready")` |
- * | **bind** | Registers a global hotkey. Window title is optional | `bind(MOD.ALT, KEY.F1, function() end, "Notepad")` |
+ * | **bind** | Registers a global hotkey. | `bind(MOD.ALT, KEY.F1, function() end, "Notepad")` |
  * | **send** | Simulates a key press | `send(KEY.ENTER)` |
  * | **focus** | Brings window to foreground | `focus("Notepad")` |
  * | **write** | Types text | `write("Hello, World!")` |
@@ -27,7 +27,11 @@
  * | **mouse_move** | Moves cursor to X, Y coordinates | `mouse_move(1920, 1080)` |
  * | **mouse_click** | Clicks mouse button | `mouse_click(0)` |
  * | **mouse_pos** | Returns current mouse position | `local p = mouse_pos()` |
+ * | **set_interval** | Sets a repeating timer | `set_interval(1000, function() log("Tick") end, "Notepad")` |
  * 
+ * 
+ * Note: Window title in the last parameter is optional
+ *
  * ## Example Script
  * 
  * @code
@@ -61,6 +65,7 @@
 #include "api/WindowManager.hpp"
 #include "utils/KeyCodes.hpp"
 #include "core/Directory.hpp"
+#include "api/TimerManager.hpp"
 
 std::atomic<bool> needReload = false;
 
@@ -83,6 +88,7 @@ void SetupLuaEnvironment(sol::state& lua) {
     lua.set_function("mouse_move", &InputManager::SetMousePos);
     lua.set_function("mouse_click", &InputManager::MouseClick);
     lua.set_function("mouse_pos", &InputManager::GetMousePos);
+    lua.set_function("set_interval", &TimerManager::Add);
 
     KeyCodes::Bind(lua);
 }
