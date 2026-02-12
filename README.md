@@ -6,28 +6,20 @@
 ![Build](https://img.shields.io/badge/Build-CMake-064F8C?logo=cmake)
 [![Docs](https://img.shields.io/badge/Documentation-GitHub_Pages-blue?style=flat&logo=github)](https://jvnkoo.github.io/MoonKey/)
 
-MoonKey is a lightweight automation engine that bridges Windows system calls with a Lua scripting environment. Unlike similar tools that rely on restricted, custom macro languages, MoonKey gives you the full power of real programming. You can write complex logic, use conditional statements, loops, and extend built-in functions with standard Lua code to handle any task. It allows you to register global hotkeys, simulate keyboard input, and manage window focus through flexible scripts that can be modified on the fly without ever touching C++ or recompiling the engine.
+MoonKey is a lightweight automation engine that bridges Windows system calls with the Lua scripting environment. It enables global hotkeys, input simulation, and window management through flexible scripts that can be modified on the fly without recompiling the C++ core.
+
+Unlike tools restricted by custom macro languages, MoonKey provides the full power of Lua 5.4. This allows for complex logic, conditional loops, and modular code to handle any task with the speed and flexibility of a real programming language.
 
 ## Development Status 
 
-**MoonKey is currently in early alpha.** The core engine is functional, but the API surface is still growing. 
+MoonKey's core engine is functional. Development is currently focused on expanding the **API surface** and adding **new features**.
 
-**Contributions are highly welcome!** Whether it's adding new system bindings, improving the engine, or fixing bugs, feel free to open an Issue or submit a Pull Request.
+**Contributions welcome** — open an issue or submit a PR on [GitHub](https://github.com/jvnkoo/MoonKey/issues).
 
-> [!TIP]
-> Complete API documentation, including a full list of supported keys and modifiers, is available on [GitHub Pages](https://jvnkoo.github.io/MoonKey/).
+## Documentation
 
-## Basic Lua API
-
-| Function | Description | Example |
-| --- | --- | --- |
-| `log(msg)` | Prints message to console | `log("Action triggered")` |
-| `bind(mod, key, fn, wtitle)` | Registers a global hotkey. Window title is optional. | `bind(MOD.ALT, KEY.F1, function() ... end, "Notepad")` |
-| `send(key)` | Simulates a single key tap | `send(KEY.ENTER)` |
-| `focus(title)` | Brings window to foreground | `focus("Notepad")` |
-| `write(text)` | Types a string of text | `write("Hello World")` |
-| `wait(sec)` | Pauses execution (seconds) | `wait(1.5)` |
-| `sleep(ms)` | Pauses execution (ms) | `sleep(500)` |
+Complete API reference, supported keys, and advanced examples:  
+**https://jvnkoo.github.io/MoonKey/**
 
 ## Quick Start
 
@@ -50,10 +42,8 @@ end)
 log("Scripts loaded. Press Alt+T to test.")
 
 ```
-
-## Configuration
-
-The engine automatically loads `scripts/main.lua` on startup. Key codes (`KEY`) and modifiers (`MOD`) are globally available within the Lua state.
+> [!NOTE]
+> The engine automatically loads `scripts/main.lua` on startup. Key codes and modifiers are globally available.
 
 ---
 
