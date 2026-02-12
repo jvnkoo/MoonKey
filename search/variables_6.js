@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['shouldclear_0',['shouldClear',['../structHotkeyManager.html#a466d17fece329ecbb9bc04282bf74f16',1,'HotkeyManager']]]
+  ['queuemutex_0',['queueMutex',['../structHotkeyManager.html#ab0bfd1d6929b1593371d22f51b912a84',1,'HotkeyManager']]]
 ];

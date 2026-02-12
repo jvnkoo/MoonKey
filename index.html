@@ -119,7 +119,7 @@ Core Functions</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyLeft"><b>log</b>   </td><td class="markdownTableBodyLeft">Prints a message to console   </td><td class="markdownTableBodyLeft"><code>log("System ready")</code>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft"><b>bind</b>   </td><td class="markdownTableBodyLeft">Registers a global hotkey. Window title is optional   </td><td class="markdownTableBodyLeft"><code>bind(MOD.ALT, KEY.F1, function() end, "Notepad")</code>    </td></tr>
+<td class="markdownTableBodyLeft"><b>bind</b>   </td><td class="markdownTableBodyLeft">Registers a global hotkey.   </td><td class="markdownTableBodyLeft"><code>bind(MOD.ALT, KEY.F1, function() end, "Notepad")</code>    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyLeft"><b>send</b>   </td><td class="markdownTableBodyLeft">Simulates a key press   </td><td class="markdownTableBodyLeft"><code>send(KEY.ENTER)</code>    </td></tr>
 <tr class="markdownTableRowEven">
@@ -135,8 +135,11 @@ Core Functions</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyLeft"><b>mouse_click</b>   </td><td class="markdownTableBodyLeft">Clicks mouse button   </td><td class="markdownTableBodyLeft"><code>mouse_click(0)</code>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft"><b>mouse_pos</b>   </td><td class="markdownTableBodyLeft">Returns current mouse position   </td><td class="markdownTableBodyLeft"><code>local p = mouse_pos()</code>   </td></tr>
+<td class="markdownTableBodyLeft"><b>mouse_pos</b>   </td><td class="markdownTableBodyLeft">Returns current mouse position   </td><td class="markdownTableBodyLeft"><code>local p = mouse_pos()</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><b>set_interval</b>   </td><td class="markdownTableBodyLeft">Sets a repeating timer   </td><td class="markdownTableBodyLeft"><code>set_interval(1000, function() log("Tick") end, "Notepad")</code>   </td></tr>
 </table>
+<p>Note: Window title in the last parameter is optional</p>
 <h2><a class="anchor" id="autotoc_md3"></a>
 Example Script</h2>
 <div class="fragment"><div class="line">-- Simple automation example</div>

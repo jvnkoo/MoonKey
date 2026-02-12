@@ -6,5 +6,7 @@ var annotated_dup =
     [ "HotkeyManager", "structHotkeyManager.html", "structHotkeyManager" ],
     [ "HotkeyRequest", "structHotkeyRequest.html", "structHotkeyRequest" ],
     [ "InputManager", "structInputManager.html", "structInputManager" ],
+    [ "TimerData", "structTimerData.html", "structTimerData" ],
+    [ "TimerManager", "classTimerManager.html", "classTimerManager" ],
     [ "WindowManager", "structWindowManager.html", "structWindowManager" ]
 ];

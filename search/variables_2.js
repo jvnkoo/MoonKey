@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mods_0',['mods',['../structHotkeyRequest.html#aaed6d86a22ff17100d739971cab33e99',1,'HotkeyRequest']]]
+  ['interval_0',['interval',['../structTimerData.html#aa9f9d19108bdc5e42eca6936d98ab0d9',1,'TimerData']]]
 ];
