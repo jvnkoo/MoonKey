@@ -11,6 +11,7 @@ obj/
 *.lib
 *.o
 *.obj
+venv/
 
 # --- CMake ---
 CMakeCache.txt
@@ -66,7 +67,7 @@ desktop.ini
 *.log
 *.tmp
 *.bakhtml/
-docs/
+site/
 
 # --- Language Servers / Tools ---
 .cache/
