@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/user-attachments/assets/87d8b1f3-1fae-4603-a03d-85bac3175122" width="400" alt="MoonKey Logo">
+<img src="https://github.com/user-attachments/assets/c71ea658-3b29-4fbc-94dd-98592c9a6f7a" width="600" alt="MoonKey Logo">
 
 **Automate Windows with Lua. No custom macro language. No limits.**
 
