@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    runs-on: windows-latest
+    runs-on: windows-latest 
     permissions:
       contents: write
 
@@ -17,17 +17,23 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install Conan
+        run: |
+          pip install conan
+          conan profile detect # Автодетект компилятора на виртуалке
+
+      - name: Install Dependencies
+        run: |
+          conan install . --output-folder=build --build=missing -s build_type=Release
+
       - name: Configure CMake
         run: >
-          cmake -B build_win 
+          cmake -B build 
           -DCMAKE_BUILD_TYPE=Release 
-          "-DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake" 
-          -DVCPKG_TARGET_TRIPLET=x64-windows-static
-          -DVCPKG_MANIFEST_MODE=ON
-          -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded"
+          -DCMAKE_TOOLCHAIN_FILE=build/generators/conan_toolchain.cmake
 
       - name: Build Project
-        run: cmake --build build_win --config Release
+        run: cmake --build build --config Release
 
       - name: Generate Changelog
         id: changelog
@@ -42,9 +48,9 @@ jobs:
           $commits | Out-File -FilePath changelog.txt -Encoding utf8
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2 
         with:
-          files: build_win/Release/MoonKey.exe
+          files: build/Release/MoonKey.exe
           body_path: changelog.txt
           draft: false
           prerelease: false
