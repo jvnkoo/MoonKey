@@ -1,5 +1,5 @@
 #include "../core/HotkeyManager.hpp"
-#include "api/TimerManager.hpp"
+#include "../api/TimerManager.hpp"
 
 void HotkeyManager::MessageLoop() {
     MSG msg = { 0 };
